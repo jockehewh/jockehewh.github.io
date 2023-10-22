@@ -1,14 +1,118 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Portfolio web</title>
   <link rel="stylesheet" href="projects/css/uikit.min.css">
+  <style>
+    body{
+      user-select: none;
+    }
+    .header-main{
+      min-width: 640px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .header-main h1{
+      margin: 0;
+      text-align: center;
+    }
+    .header-main p{
+      margin:0;
+    }
+    .header-main .welcome{
+      max-width: 300px;
+    }
+    .actions-list{
+      padding: 0;
+      display: flex;
+      list-style-type: none;
+      justify-content: space-around;
+    }
+    .inside-side-menu{}
+    .resize{
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 20px;
+      height: 100%;
+      cursor: ew-resize;
+    }
+    .inside-side-menu .uk-card-header{
+      color: #fff;
+      border-bottom: solid .5px white;
+    }
+  </style>
 </head>
+
 <body>
-  <main>Bonjour!</main>
+  <header class="uk-height-small header-main uk-container">
+    <div class="social">
+      <a href="#side-menu" uk-icon="icon: info; ratio: 2" uk-tooltip="title: Plus d'informations; pos: right;" uk-toggle></a>
+    </div>
+    
+    <h1>Xavier Bélénus,<br>Développeur web.</h1>
+    <div class="welcome">
+      
+      <p>Bienvenue sur mon portfolio. Vous trouverez ci-dessous quelques une de mes réalisations.</p>
+    </div>
+    
+  </header>
+
+  <div id="side-menu" uk-offcanvas="bg-close: false;">
+    <div class="uk-offcanvas-bar inside-side-menu">
+      <button class="uk-offcanvas-close" type="button" uk-close></button>
+      <h3>Xavier Bélénus</h3>
+      <p>Développeur web full-stack spécialisé en javascript.<br>pour plus d'informations je vous laisses explorer les options ci-dessous.</p>
+      <ul class="actions-list">
+        <li><a href="#" class="load-stack" uk-icon="icon: file-text; ratio: 2" uk-tooltip="title: Charger ma stack technique; pos: bottom;"></a></li>
+        <li><a href="#" class="load-panel" uk-icon="icon: database; ratio: 2" uk-tooltip="title: Charger le script de monitoring; pos: bottom;"></a></li>
+      </ul>
+
+      <div class="resize"></div>
+    </div>
+  </div>
   <script src="projects/js/uikit.min.js"></script>
   <script src="projects/js/uikit-icons.min.js"></script>
+  <script>
+    const startResize = (e)=>{
+      window.addEventListener('mousemove', resize);
+      window.addEventListener('mouseup', stopResize);
+    }
+    const resize = (e)=>{
+      resizeBtn.parentElement.style.width =  `${e.clientX - resizeBtn.parentElement.offsetLeft}px`
+    }
+    const stopResize = (e)=>{
+        window.removeEventListener('mousemove', resize);
+        window.removeEventListener('mouseup', stopResize);
+    }
+    const createPanel = ()=>{
+      let panel = document.createElement('div')
+      let panelHeader = document.createElement('div')
+      let panelBody = document.createElement('div')
+      panel.classList.add("uk-card")
+      panelHeader.classList.add("uk-card-header")
+      panelBody.classList.add("uk-card-body")
+      panel.appendChild(panelHeader)
+      panel.appendChild(panelBody)
+      return panel
+    }
+    document.querySelector('.load-stack').addEventListener('click', ()=>{
+      let s = document.createElement('script')
+      s.src = "projects/js/display_stack.js"
+      document.body.appendChild(s)
+    })
+    document.querySelector('.load-panel').addEventListener('click', ()=>{
+      let s = document.createElement('script')
+      s.src = "projects/js/display_panel.js"
+      document.body.appendChild(s)
+    })
+    const resizeBtn = document.querySelector('.resize')
+    resizeBtn.addEventListener('mousedown', startResize)
+  </script>
 </body>
+
 </html>
