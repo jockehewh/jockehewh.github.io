@@ -1,17 +1,5 @@
 const ldbURL = `https://www.themealdb.com/api/json/v1/1/random.php`
 let youtubeTemp =""
-/* SELECTORS
----------BUTTONS
-.getmeal
-.changemeal
----HEADER
-.title
-.desc
----BODY
-.uk-card-body
-.uk-card-footer
-*/
-
 
 const getMeal = ()=>{
   return fetch(ldbURL).then(res => res.json())
@@ -55,6 +43,7 @@ const displayIngredients = (ingredientsList, container)=>{
 const showVideo = (link)=>{
   let video = document.createElement('a')
   video.href = link
+  video.target = "_blank"
   video.textContent = 'Watch the video on youtube'
   document.querySelector(".uk-card-footer").appendChild(video)
 }
