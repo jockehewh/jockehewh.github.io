@@ -1,14 +1,12 @@
 // CARD HEADER |> stackPanel.querySelector(".uk-card-header")
 // CARD BODY |> stackPanel.querySelector(".uk-card-body")
-
+// TARGET = sideMenu
 /* PANEL CONTAINER */
 let flexDiv = document.createElement('div')
 flexDiv.style.display = "flex"
 flexDiv.style.flexDirection = "row"
 flexDiv.style.flexWrap = "wrap"
-
 let stackFront = ["Vanilla / Nodejs","Typescript","React","Vue","UIkit"]
-let sideMenu = document.querySelector('.inside-side-menu')
 let stackPanel = createPanel()
 stackPanel.style.marginRight = "30px"
 stackPanel.style.flex = "1"

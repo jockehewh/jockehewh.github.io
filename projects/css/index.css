@@ -1,0 +1,89 @@
+body {
+  user-select: none;
+}
+
+.header-main {
+  min-width: 640px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header-main h1 {
+  margin: 0;
+  text-align: center;
+}
+
+.header-main p {
+  margin: 0;
+}
+
+.header-main .welcome {
+  max-width: 300px;
+}
+.show-time{
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top:0;
+  right: 0;
+  text-align: center;
+}
+.actions-list {
+  padding: 0;
+  display: flex;
+  list-style-type: none;
+  justify-content: space-around;
+}
+.mousectnr{
+  text-align: center;
+}
+#draw-mouse{
+  width: 50vw;
+  height: 50vh;
+  border: solid black 1px;
+}
+
+.inside-side-menu {}
+
+.resize {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 20px;
+  height: 100%;
+  cursor: ew-resize;
+}
+
+.inside-side-menu .uk-card-header {
+  color: #fff;
+  border-bottom: solid .5px white;
+}
+
+.uk-card-body {
+  padding: 0 30px;
+}
+/* .monitoring */
+.mouse{
+  min-height: 100px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+h5{
+  margin-top: 0;
+}
+.mouse div{
+  min-width: 100px;
+}
+.mousemove::before{
+  width: 100%;
+  content: "mouse move"
+}
+.mousedown::before {
+  width: 100%;
+  content: "mouse down";
+}
+.mousehover::before {
+  width: 100%;
+  content: "mouse hover";
+}

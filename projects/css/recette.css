@@ -1,0 +1,28 @@
+body {
+  user-select: none;
+}
+.uk-navbar{
+  justify-content: end;
+}
+.title{
+
+}
+.desc::before{
+  width: 100%;
+  content: "Ingredients";
+}
+.desc{
+  padding: 0;
+}
+.line{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.separator{
+  border-bottom: dashed black 1px;
+  min-height: 2px;
+  min-width: 60%;
+  position: relative;
+  top: -10px;
+}
