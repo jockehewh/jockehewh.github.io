@@ -1,51 +1,44 @@
 <!DOCTYPE html>
 <html lang="en-gb" dir="ltr">
-
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Frontpage layout example - UIkit documentation</title>
-  <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
-  <link rel="apple-touch-icon-precomposed" href="images/apple-touch-icon.png">
-  <link rel="stylesheet" href="../css/uikit.min.css">
-  <link rel="stylesheet" href="../css/recette.css">
-  <script src="../js/uikit.min.js"></script>
-  <script src="../js/uikit-icons.min.js"></script>
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🍗</text></svg>">
+  <link rel="stylesheet" href="css/recette.css">
 </head>
 
 <body>
-  <div class="uk-container uk-container-center uk-margin-top uk-margin-large-bottom">
-    <nav class="uk-navbar uk-margin-large-bottom">
-      <ul class="uk-navbar-nav uk-hidden-small">
-        <li class="">
-          <a href="#" class="hotmeal">Obtenir une recette</a>
-        </li>
-      </ul>
+  <main>
+    <nav>
+          <a href="#" class="hotmeal">🔍 Click me for a meal idea!</a>
     </nav>
 
     <div class="recetteDisplay" >
       <div class="">
       </div>
     </div>
-  </div>
-<script src="../js/recette.js"></script>
+    <div class="viewed"></div>
+  </main>
+<script src="js/recette.js"></script>
 <template id="meal-card">
-  <div class="uk-card uk-width-1-2@m">
-    <div class="uk-card-header">
-      <div class="uk-grid-small uk-flex-middle" uk-grid>
-        <div class="uk-width-auto">
-          <img class="uk-border-square " width="160" height="160" src="" alt="">
+  <div class="meal-card">
+    <div>
+      <div class="meal-card-header">
+        <div>
+          <img width="360" height="360" src="" alt="">
         </div>
-        <div class="uk-width-expand">
-          <h3 class="uk-card-title uk-margin-remove-bottom title">Title</h3>
-          <p class="origin"></p>
+        <div class="infos">
+          <h1 class="title">Title</h1>
+          <h3 class="origin"></h3>
         </div>
       </div>
     </div>
-    <div class="uk-card-body"><ol class="desc"></ol>
+    <div><ol class="desc">
+      <br><br>
+    </ol>
       <div class="howto"></div>
-    </div>
-    <div class="uk-card-footer">
     </div>
   </div>
 </template>

@@ -1,0 +1,108 @@
+body {
+  user-select: none;
+  font-family: fantasy;
+  margin: 0;
+  font-size: 22px;
+}
+nav{
+  display: flex;
+  justify-content: center;
+  min-width: 360px;
+}
+a{
+  text-decoration: none;
+  color: black;
+  margin-bottom: 8px;
+}
+.hotmeal{
+  padding: 22px;
+}
+main{
+  display: flex;
+  flex-direction: column;
+}
+.title{
+  margin: 0;
+}
+.desc::before{
+  width: 100%;
+  content: "Ingredients :";
+  text-decoration: underline;
+}
+.desc{
+  padding: 0;
+}
+.line{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  max-width: 50%;
+  min-width: 360px;
+}
+.separator{
+  border-bottom: dashed black 1px;
+  min-height: 2px;
+  min-width: 60%;
+  position: relative;
+  top: -10px;
+}
+.recetteDisplay{
+  padding: 2rem;
+  max-width: 950px;
+  align-self: center;
+}
+.meal-card-header{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.infos{
+  display: grid;
+  min-width: 40%;
+}
+img::after{
+  width: 100%;
+}
+.viewed{
+  display: flex;
+  flex-direction: row;
+  min-width: 360px;
+  max-width: 950px;
+  overflow: auto;
+  position: sticky;
+  bottom: 0;
+  padding: 0 2rem 1rem;
+}
+.viewed div{
+  width: 90px;
+  min-width: 90px;
+  height: 90px;
+  background-size: contain;
+  margin: 4px;
+  cursor: pointer;
+}
+.viewed div p{
+  margin: 0;
+  font-size: 15px;
+  background: wheat;
+  opacity: .5;
+}
+
+@media screen and (max-width: 650px) {
+  .meal-card-header {
+    flex-direction: column-reverse;
+  }
+  .recetteDisplay{
+    padding: 2rem 1rem;
+  }
+  .line {
+    max-width: 360px;
+  }
+  .infos{
+    justify-items: center;
+  }
+  .viewed {
+    position: unset;
+    padding: 0 1rem 1rem;
+  }
+}
