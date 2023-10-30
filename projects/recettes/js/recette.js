@@ -6,7 +6,6 @@ const getMeal = ()=>{
 }
 
 const displayMainInfos = (infos, container, showAgain = false)=>{
-  console.log(infos)
   container.querySelector('.title').textContent = infos.strMeal
   container.querySelector('.origin').textContent = "Origin: " + infos.strArea
   container.querySelector('.howto').textContent = infos.strInstructions
@@ -19,7 +18,6 @@ const displayMainInfos = (infos, container, showAgain = false)=>{
     ingredients[i] = [infos[`strIngredient${i}`], infos[`strMeasure${i}`]]
     i++
   }
-  console.log(ingredients)
   displayIngredients(ingredients, container.querySelector(".desc"))
   if (!showAgain) createMemo(infos)
 }
