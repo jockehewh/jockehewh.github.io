@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Secret maker</title>
+  <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+  <main>
+    <h1>←Encrypt your secret→</h1>
+    <div class="encdec">
+      <div>
+        <label for="encode"><h2>Encode secret→</h2></label>
+        <textarea name="encode" id="encode" cols="50" rows="30"></textarea>
+      </div>
+      <div class="btns">
+        <div>
+          <p><span>Note:</span> Save your encryption level, you will need it to decrypt the secret. <br><br></p>
+          <fieldset>
+            <legend>Select encryption level</legend>
+            <div>
+              <input checked type="radio" name="force" id="1" value="1">
+              <label for="1">1</label>
+            </div>
+            <div>
+              <input type="radio" name="force" id="2" value="2">
+              <label for="2">2</label>
+            </div>
+            <div>
+              <input type="radio" name="force" id="3" value="3">
+              <label for="3">3</label>
+            </div>
+            <div>
+              <input type="radio" name="force" id="4" value="4">
+              <label for="4">4</label>
+            </div>
+            <div>
+              <input type="radio" name="force" id="5" value="5">
+              <label for="5">5</label>
+            </div>
+            <div>
+              <input type="radio" name="force" id="6" value="6">
+              <label for="6">6</label>
+            </div>
+            <div>
+              <input type="radio" name="force" id="7" value="7">
+              <label for="7">7</label>
+            </div>
+            
+          </fieldset>
+        </div>
+        <button class="encode">→ → → encode → → →</button>
+        <button class="decode">← ← ← decode ← ← ←</button>
+      </div>
+      <div>
+        <label for="decode"><h2>←Decode secret</h2></label>
+        <textarea name="decode" id="decode" cols="50" rows="30"></textarea>
+      </div>
+    </div>
+  </main>
+  <script src="js/index.js"></script>
+</body>
+</html>
