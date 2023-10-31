@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Google search</title>
+  <style>
+    *{margin: 0; padding: 0;}
+    .search-box{
+      display: flex;
+      flex-direction: row;
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+    <div class="search-box">
+      <input type="text" name="" id="query">
+      <input id="search" type="submit" value="Search">
+    </div>
+    <div class="display-results"></div>
+  </main>
+  <script src="https://apis.google.com/js/api.js"></script>
+  <script>
+    function loadClient() {
+      gapi.client.setApiKey("AIzaSyDx8Bn3RTTRE1u5IUe_7SLj2zuX-mASTxg");
+      return gapi.client.load("https://content.googleapis.com/discovery/v1/apis/customsearch/v1/rest")
+        .then(function () { console.log("GAPI client loaded for API"); },
+          function (err) { console.error("Error loading GAPI client for API", err); });
+    }
+    // Make sure the client is loaded before calling this method.
+    function execute() {
+      return gapi.client.search.cse.list({
+        "q": "money",
+        "safe": "active"
+      })
+        .then(function (response) {
+          // Handle the results here (response.result has the parsed body).
+          console.log("Response", response);
+        },
+          function (err) { console.error("Execute error", err); });
+    }
+    gapi.load("client");
+    loadClient()
+  </script>
+  <script>
+    let googlekey = "AIzaSyDx8Bn3RTTRE1u5IUe_7SLj2zuX-mASTxg"
+    let googleURL = "https://google.com/search?q="
+    function search(params){
+      return fetch(googleURL+params, {mode:"no-cors", referrerPolicy: "no-referrer" }).then(res=> res)
+    }
+    document.querySelector('#search').addEventListener('click', async ()=>{
+      /* let searchParam = document.querySelector('#query').value
+      searchParam = searchParam.replaceAll(" ", "+")
+      let res = await search(searchParam)
+      console.log(res) */
+      execute()
+    })
+  </script>
+</body>
+
+</html>
