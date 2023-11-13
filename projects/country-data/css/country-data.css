@@ -110,8 +110,8 @@ body {
   cursor: pointer;
   position: absolute;
   top: 0;
-  left: 50%;
-  right: 50%;
+  left: 40%;
+  right: 40%;
   min-width: max-content;
 }
 
