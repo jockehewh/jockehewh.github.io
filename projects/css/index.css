@@ -4,11 +4,15 @@ body {
 
 .header-main {
   min-width: 640px;
-  display: flex;
+  display: grid;
   align-items: center;
   justify-content: space-between;
+  padding: 0 30px;
+  grid-template-columns: 1fr 1fr 1fr;
 }
-
+.social{
+  text-align: center;
+}
 .header-main h1 {
   margin: 0;
   text-align: center;
@@ -24,9 +28,6 @@ body {
 .show-time{
   display: flex;
   flex-direction: column;
-  position: absolute;
-  top:0;
-  right: 0;
   text-align: center;
 }
 .actions-list {
@@ -39,11 +40,34 @@ body {
   text-align: center;
 }
 #draw-mouse{
-  width: 50vw;
-  height: 50vh;
+  width: calc(100vw/4);
+  height: calc(100vh/4);
   border: solid black 1px;
 }
-
+iframe{
+  width: calc(100vw/2);
+  height: calc(100vh/2);
+  border: solid black 1px;
+}
+.projects{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.projects ul{
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+  gap: 50px;
+  margin-top: 20px;
+}
+.projects ul li a{
+  padding: 15px;
+}
+iframe{
+  border: 0;
+}
 .inside-side-menu {}
 
 .resize {
