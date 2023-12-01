@@ -36,33 +36,25 @@ body {
   list-style-type: none;
   justify-content: space-around;
 }
-.mousectnr{
-  text-align: center;
-}
-#draw-mouse{
-  width: calc(100vw/4);
-  height: calc(100vh/4);
-  border: solid black 1px;
-}
+
 iframe{
-  width: calc(100vw/2);
-  height: calc(100vh/1.5);
+  width: calc(93vw);
+  height: calc(93vh);
   border: solid black 1px;
 }
-.projects{
+.projects-front{
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-.projects ul{
+.projects-front ul{
   list-style-type: none;
   display: flex;
   flex-direction: row;
-  gap: 50px;
   margin-top: 20px;
 }
-.projects ul li a{
+.projects-front ul li a{
   padding: 15px;
 }
 iframe{

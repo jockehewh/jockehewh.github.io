@@ -1,10 +1,11 @@
 
 // target = sideMenu
 
+let monitoringBox = document.createElement("ul")
 let controlDiv = document.createElement('div')
 controlDiv.classList.add('monitoring')
 sideMenu.insertBefore(controlDiv, sideMenu.querySelector('.resize'))
-let monitoringBox = document.createElement("ul")
+/* 
 let mouseBox = document.createElement('li')
 let mouseTitle = document.createElement("h3")
 let mouseBoxSub = document.createElement("div")
@@ -91,7 +92,7 @@ mouseHover.addEventListener("mouseenter", () => {
 })
 mouseHover.addEventListener("mouseleave", () => {
   mouseHover.style.background = "unset"
-})
+}) */
 //ajouté les api navigateur
 
 //---------------------------------------------------||

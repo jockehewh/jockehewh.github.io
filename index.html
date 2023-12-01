@@ -16,24 +16,19 @@
         <span class="date"></span>
         <span class="time"></span>
       </div>
-      <a href="#side-menu" uk-icon="icon: info; ratio: 2" uk-tooltip="title: Plus d'informations; pos: right;" uk-toggle></a>
     </div>
     <h1>Xavier Bélénus,<br>Développeur web.</h1>
   </header>
-  <div class="mousectnr">
-    <p>Quel(le) genre de navigateur êtes vous?</p>
-    <canvas id="draw-mouse"></canvas>
-  </div>
-  <div class="projects">
+  <div class="projects-front">
     <ul>
-      <li><a href="./projects/country-data" target="_projects_">country-data</a></li>
-      <li><a href="./projects/guess-my-number" target="_projects_">guess-my-number</a></li>
-      <li><a href="./projects/pig-game-xavier" target="_projects_">pig-game</a></li>
-      <li><a href="./projects/pokedex" target="_projects_">pokedex</a></li>
-      <li><a href="./projects/recettes" target="_projects_">recettes</a></li>
-      <li><a href="./projects/secret-maker" target="_projects_">secret-maker</a></li>
+      <li><a href="./projects/country-data" target="_projects-front_">country-data</a></li>
+      <li><a href="./projects/guess-my-number" target="_projects-front_">guess-my-number</a></li>
+      <li><a href="./projects/pig-game-xavier" target="_projects-front_">pig-game</a></li>
+      <li><a href="./projects/pokedex" target="_projects-front_">pokedex</a></li>
+      <li><a href="./projects/recettes" target="_projects-front_">recettes</a></li>
+      <li><a href="./projects/secret-maker" target="_projects-front_">secret-maker</a></li>
     </ul>
-    <iframe src="" name="_projects_"></iframe>
+    <iframe src="" name="_projects-front_"></iframe>
   </div>
   <div id="side-menu" uk-offcanvas="bg-close: false;">
     <div class="uk-offcanvas-bar inside-side-menu">
@@ -42,7 +37,6 @@
       <p>Développeur web full-stack spécialisé en javascript.<br>pour plus d'informations je vous laisses explorer les options ci-dessous.</p>
       <ul class="actions-list">
         <li><a href="#" class="load-stack" uk-icon="icon: file-text; ratio: 2" uk-tooltip="title: Charger ma stack technique; pos: bottom;"></a></li>
-        <li><a href="#" class="load-panel" uk-icon="icon: database; ratio: 2" uk-tooltip="title: Charger le script de monitoring; pos: bottom;"></a></li>
       </ul>
       <div class="resize"></div>
     </div>
@@ -100,22 +94,7 @@
       document.body.appendChild(s)
     })
     resizeBtn.addEventListener('mousedown', startResize)
-    let canva = document.querySelector('#draw-mouse')
-    const ctx = canva.getContext("2d")
-    ctx.beginPath();
-    ctx.lineWidth = 1;
-    ctx.strokeStyle = "green";
-    window.addEventListener('mousemove', (e)=>{
-      visit.mouseMoves.push([e.clientX, e.clientY])
-      ctx.lineTo(e.clientX/6.4, e.clientY/6.3)
-      ctx.stroke()
-      if(document.querySelector('.mousemove')){
-        document.querySelector('.mousemove').style.background= "green"
-        document.querySelector('.mousex').textContent = `x: ${e.clientX}` 
-        document.querySelector('.mousey').textContent = `y: ${e.clientY}`
-      }
-      sideMenu.dispatchEvent(new Event('mousemoveend'))
-    })
+    
 
   </script>
 </body>
