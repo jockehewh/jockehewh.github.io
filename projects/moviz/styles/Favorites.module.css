@@ -1,0 +1,17 @@
+.fav{
+  padding: 0 8px;
+  border: solid white 2px;
+  color: white;
+  background-color: black;
+  border-radius: 5px;
+}
+
+.fav_modal{
+  display: none;
+  position: absolute;
+  top: 80px px;
+  right: 0;
+}
+.show_modal{
+  display: block;
+}
