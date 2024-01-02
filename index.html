@@ -28,74 +28,134 @@
       <li><a href="./projects/recettes" target="_projects-front_">recettes</a></li>
       <li><a href="./projects/secret-maker" target="_projects-front_">secret-maker</a></li>
     </ul>
-    <iframe src="" name="_projects-front_"></iframe>
+    <div class="container">
+      <div class="top">
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+      </div>
+    
+      <div class="content">
+        <iframe src="" name="_projects-front_"></iframe>
+      </div>
+    </div>
+    
   </div>
-  <div id="side-menu" uk-offcanvas="bg-close: false;">
-    <div class="uk-offcanvas-bar inside-side-menu">
-      <button class="uk-offcanvas-close" type="button" uk-close></button>
-      <h2>Xavier Bélénus</h2>
-      <p>Développeur web full-stack spécialisé en javascript.<br>pour plus d'informations je vous laisses explorer les options ci-dessous.</p>
-      <ul class="actions-list">
-        <li><a href="#" class="load-stack" uk-icon="icon: file-text; ratio: 2" uk-tooltip="title: Charger ma stack technique; pos: bottom;"></a></li>
+  <div class="projects-back">
+    <h1>Easy API (Mock)</h1>
+    <div>
+      <ul class="apimock">
+        <li>
+          <a href="" id="text">GET /text</a>
+        </li>
+        <li>
+          <a href="" id="json">GET /json</a>
+        </li>
+        <li>
+          <a href="" id="posttext">POST /text</a>
+          <div>
+            <input type="text" class="posttext" value="test" placeholder="entrer du texte">
+          </div>
+        </li>
+        <li>
+          <a href="" id="postjson">POST /json</a>
+          <div>
+            <span>valeur1:</span><input id="value1" type="text">
+            <span>valeur2:</span><input id="value2" type="text">
+            <span>valeur3:</span><input id="value3" type="text">
+          </div>
+        </li>
       </ul>
-      <div class="resize"></div>
+      <ul class="apiresult">
+        <li>
+          <div>
+          <p class="gettext"></p>
+        </div>
+      </li>
+        <li>
+          <div>
+            <code></code>
+          </div>
+        </li>
+        <li>
+          <div>
+            <p id="posttext-output"></p>
+          </div>
+        </li>
+        <li>
+          <div>
+            <code id="postjson-output"></code>
+          </div>
+        </li>
+      </ul>
     </div>
   </div>
-  <script src="projects/js/uikit.min.js"></script>
-  <script src="projects/js/uikit-icons.min.js"></script>
+
   <script>
-    let visit = {
-      timeIn: Date.now(),
-      durationInSeconds: 0,
-      mouseMoves: [],
-    }
-    
-    localStorage.visit = JSON.stringify(visit)
     document.querySelector('.date').textContent = new Intl.DateTimeFormat('fr').format(Date.now())
     const showTime = setInterval(()=>{
       document.querySelector('.time').textContent = new Intl.DateTimeFormat('fr',{timeStyle: 'medium'}).format(Date.now())
-      visit.durationInSeconds++
-      if(visit.durationInSeconds % 60 === 0){
-        localStorage.visit = JSON.stringify(visit)
-      }
     }, 1000)
-    const sideMenu = document.querySelector('.inside-side-menu')
-    const resizeBtn = document.querySelector('.resize')
-    const startResize = (e)=>{
-      window.addEventListener('mousemove', resize);
-      window.addEventListener('mouseup', stopResize);
-    }
-    const resize = (e)=>{
-      resizeBtn.parentElement.style.width =  `${e.clientX - resizeBtn.parentElement.offsetLeft}px`
-    }
-    const stopResize = (e)=>{
-        window.removeEventListener('mousemove', resize);
-        window.removeEventListener('mouseup', stopResize);
-    }
-    const createPanel = ()=>{
-      let panel = document.createElement('div')
-      let panelHeader = document.createElement('div')
-      let panelBody = document.createElement('div')
-      panel.classList.add("uk-card")
-      panelHeader.classList.add("uk-card-header")
-      panelBody.classList.add("uk-card-body")
-      panel.appendChild(panelHeader)
-      panel.appendChild(panelBody)
-      return panel
-    }
-    document.querySelector('.load-stack').addEventListener('click', ()=>{
-      let s = document.createElement('script')
-      s.src = "projects/js/display_stack.js"
-      document.body.appendChild(s)
-    })
-    document.querySelector('.load-panel').addEventListener('click', ()=>{
-      let s = document.createElement('script')
-      s.src = "projects/js/display_panel.js"
-      document.body.appendChild(s)
-    })
-    resizeBtn.addEventListener('mousedown', startResize)
     
+    const registerServiceWorker = async () => {
+        if ("serviceWorker" in navigator) {
+          try {
+            const registration = await navigator.serviceWorker.register("/sw.js", {
+              scope: "/",
+            });
+            if (registration.installing) {
+              console.log("Service worker installing");
+              window.location.href = window.location.href
+            } else if (registration.waiting) {
+              console.log("Service worker installed");
+            } else if (registration.active) {
+              console.log("Service worker active");
+            }
+          } catch (error) {
+            console.error(`Registration failed with ${error}`);
+          }
+        }
+      }
+      registerServiceWorker();
 
+  document.querySelector('#text').addEventListener('click', e=>{
+    e.preventDefault()
+    fetch("/api/text").then(res=>res.text()).then(data=>{
+      console.log(data)
+      document.querySelector('.gettext').textContent = data
+    }).catch(err=>console.log(err))
+  })
+  document.querySelector('#posttext').addEventListener('click', e => {
+      e.preventDefault()
+      fetch("/api/text", {
+        method: "POST",
+        body: document.querySelector('.posttext').value
+      }).then(res => res.text()).then(data => {
+        console.log(data)
+        document.querySelector('#posttext-output').textContent = data
+      }).catch(err => console.log(err))
+    })
+  document.querySelector('#json').addEventListener('click', e => {
+    e.preventDefault()
+    fetch("/api/json").then(res => res.json()).then(data => {
+      console.log(data)
+      document.querySelector('code').textContent = JSON.stringify(data)
+    }).catch(err => console.log(err))
+  })
+  document.querySelector('#postjson').addEventListener('click', e => {
+      e.preventDefault()
+      fetch("/api/json", {
+        method: "POST",
+        body: JSON.stringify({
+          value1: document.querySelector('#value1').value,
+          value2: document.querySelector('#value2').value,
+          value3: document.querySelector('#value3').value
+        })
+      }).then(res => res.json()).then(data => {
+        console.log(data)
+        document.querySelector('#postjson-output').textContent = JSON.stringify(data)
+      }).catch(err => console.log(err))
+    })
   </script>
 </body>
 

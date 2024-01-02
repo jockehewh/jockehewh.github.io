@@ -57,6 +57,47 @@ iframe{
 .projects-front ul li a{
   padding: 15px;
 }
+.dot {
+  height: 12px;
+  width: 12px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.container {
+  border: 3px solid #888888;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.top {
+  padding: 10px;
+  background: #888888;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+}
+.apimock, .apiresult{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  list-style-type: none;
+  padding: 0;
+}
+.apimock{
+  text-align: center;
+  align-items: center;
+}
+.apiresult li{
+  border: solid;
+  max-width: 25vw;
+  padding: 8px;
+}
+code{
+  color: #000 !important;
+  text-wrap: balance !important;
+  margin-top: 10px !important;
+  margin-bottom: 10px;
+}
 iframe{
   border: 0;
 }
